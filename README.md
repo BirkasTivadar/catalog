@@ -5,6 +5,8 @@ Könytárkatalógus projektfeladat
 
 A feladat egy online könyvtár katalógus rendszerének a szimulációja. A könyvtárban vannak könyvek, zenei albumok és hangoskönyvek. A könyvek attribútumai között szerepel a címe, szerzője és az oldalak száma. Az albumok attribútumai között szerepel a címe, előadója, szerzője és hossza. A hangoskönyv mindkét attribútum halmazzal rendelkezik (ugyanis tároja a hozzá tartozó könyv adatait is).
 
+![catalog_UML.png](catalog_UML.png)
+
 A feladat reprezentációjához a következő elemeket kell megvalósítani:
 
 Feature interface: 
