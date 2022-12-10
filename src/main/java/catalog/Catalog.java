@@ -54,13 +54,8 @@ public class Catalog {
     }
 
     public List<CatalogItem> findByCriteria(SearchCriteria searchCriteria) {
-        List<CatalogItem> result = new ArrayList<>();
-
-        for (CatalogItem catalogItem : catalogItems) {
-            boolean bool = catalogItem.getFeatures().stream()
-                    .anyMatch(feature -> feature.getTitle().equals(searchCriteria.getTitle()) || feature.getContributors().contains(searchCriteria.getContributor()));
-            if (bool) result.add(catalogItem);
-        }
-        return result;
+        return catalogItems.stream()
+                .filter(catalogItem -> catalogItem.getTitles().contains(searchCriteria.getTitle()) || catalogItem.getContributors().contains(searchCriteria.getContributor()))
+                .toList();
     }
 }
