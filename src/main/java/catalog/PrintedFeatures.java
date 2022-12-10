@@ -15,6 +15,7 @@ public class PrintedFeatures implements Feature {
         if (Validators.isBlank(title)) throw new IllegalArgumentException("Empty title");
         if (numberOfPages <= 0) throw new IllegalArgumentException("Number of pages must be larger than zero");
         if (Validators.isEmpty(authors)) throw new IllegalArgumentException("There must be author(s)");
+
         this.title = title;
         this.numberOfPages = numberOfPages;
         this.authors = new ArrayList<>(authors);

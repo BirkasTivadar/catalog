@@ -13,6 +13,7 @@ public class AudioFeatures implements Feature {
         if (Validators.isBlank(title)) throw new IllegalArgumentException("Title can not be null or empty");
         if (length <= 0) throw new IllegalArgumentException("Length must be larger than zero");
         if (Validators.isEmpty(performers)) throw new IllegalArgumentException("There must be perfpmers(s)");
+
         this.title = title;
         this.length = length;
         this.performers = new ArrayList<>(performers);
