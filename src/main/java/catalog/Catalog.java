@@ -54,8 +54,43 @@ public class Catalog {
     }
 
     public List<CatalogItem> findByCriteria(SearchCriteria searchCriteria) {
+        List<CatalogItem> result = new ArrayList<>();
+
+        if (searchCriteria.hasTitle() && searchCriteria.hasContributor()) {
+            setBothCriteria(searchCriteria, result);
+        }
+
+        if (searchCriteria.hasTitle()) {
+            result = getTitleCriteria(searchCriteria);
+        }
+
+        if (searchCriteria.hasContributor()) {
+            result = getContributorCriteria(searchCriteria);
+        }
+
+        return result;
+    }
+
+    private List<CatalogItem> getContributorCriteria(SearchCriteria searchCriteria) {
         return catalogItems.stream()
-                .filter(catalogItem -> catalogItem.getTitles().contains(searchCriteria.getTitle()) || catalogItem.getContributors().contains(searchCriteria.getContributor()))
+                .filter(catalogItem -> catalogItem.getContributors().contains(searchCriteria.getContributor()))
                 .toList();
     }
+
+    private List<CatalogItem> getTitleCriteria(SearchCriteria searchCriteria) {
+        return catalogItems.stream()
+                .filter(catalogItem -> catalogItem.getTitles().contains(searchCriteria.getTitle()))
+                .toList();
+    }
+
+    private void setBothCriteria(SearchCriteria searchCriteria, List<CatalogItem> result) {
+        for (CatalogItem catalogItem : catalogItems) {
+            boolean bool = catalogItem.getFeatures().stream()
+                    .anyMatch(feature -> feature.getTitle().equals(searchCriteria.getTitle()) && feature.getContributors().contains(searchCriteria.getContributor()));
+            if (bool) result.add(catalogItem);
+        }
+    }
 }
+
+
+

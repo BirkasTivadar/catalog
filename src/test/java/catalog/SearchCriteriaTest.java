@@ -10,7 +10,6 @@ class SearchCriteriaTest {
         SearchCriteria searchCriteria = SearchCriteria.createByTitle("Imagine Dragons");
         assertEquals("Imagine Dragons", searchCriteria.getTitle());
         assertTrue(searchCriteria.hasTitle());
-        System.out.println(searchCriteria.getContributor());
         assertFalse(searchCriteria.hasContributor());
     }
 

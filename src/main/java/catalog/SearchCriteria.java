@@ -31,11 +31,11 @@ public class SearchCriteria {
         return new SearchCriteria(contributor, null);
     }
 
-    public static boolean hasContributor() {
+    public boolean hasContributor() {
         return !Validators.isBlank(contributor);
     }
 
-    public static boolean hasTitle() {
+    public boolean hasTitle() {
         return !Validators.isBlank(title);
     }
 
