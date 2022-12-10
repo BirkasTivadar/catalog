@@ -2,13 +2,13 @@ package catalog;
 
 public class SearchCriteria {
 
-    public static String contributor;
+    private final String contributor;
 
-    public static String title;
+    private final String title;
 
     private SearchCriteria(String contributor, String title) {
-        SearchCriteria.contributor = contributor;
-        SearchCriteria.title = title;
+        this.contributor = contributor;
+        this.title = title;
     }
 
     public static SearchCriteria createByBoth(String title, String contributor) {
